@@ -1,0 +1,20 @@
+# docker compose up
+# docker exec -it hbase bash
+version: "3.9"
+services:
+
+  hbase-dev:
+    container_name: hbase
+    image: hibuz/hbase-dev
+    ports:
+      - 16010:16010
+      #- 9870:9870
+      #- 8088:8088
+    #command: yarn,historyserver
+    volumes:
+      - hbase-vol:/tmp
+      - .:/home/hadoop/hbase-example:rw
+    working_dir: /home/hadoop/hbase-example
+
+volumes:
+  hbase-vol: {}
